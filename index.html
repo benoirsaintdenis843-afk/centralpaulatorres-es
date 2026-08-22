@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clooset Serviços Online S.A. - Portal Corporativo</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Header / Title Bar */
+        .header {
+            border-bottom: 2px solid #238636;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin: 0;
+        }
+
+        .header-subtitle {
+            font-size: 13px;
+            color: #8b949e;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-badge {
+            background-color: rgba(46, 160, 67, 0.15);
+            color: #3fb950;
+            border: 1px solid rgba(46, 160, 67, 0.4);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Section Headings */
+        .section-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #58a6ff;
+            border-left: 4px solid #1f6feb;
+            padding-left: 12px;
+            margin-top: 0;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Services Grid */
+        .services-card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .service-box {
+            background-color: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 18px;
+            transition: border-color 0.2s ease;
+        }
+
+        .service-box:hover {
+            border-color: #58a6ff;
+        }
+
+        .service-icon {
+            color: #3fb950;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .service-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #f0f6fc;
+            margin-bottom: 8px;
+        }
+
+        .service-desc {
+            font-size: 13px;
+            color: #8b949e;
+            line-height: 1.5;
+        }
+
+        /* Two Column Layout */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 850px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Card Container */
+        .card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Info Tables */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table tr {
+            border-bottom: 1px solid #21262d;
+        }
+
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .info-table td {
+            padding: 10px 4px;
+            vertical-align: top;
+        }
+
+        .label {
+            color: #8b949e;
+            font-size: 13px;
+            width: 40%;
+            font-weight: 500;
+        }
+
+        .value {
+            color: #c9d1d9;
+            font-size: 13.5px;
+            font-weight: 600;
+            width: 60%;
+        }
+
+        .value-highlight {
+            color: #f0f6fc;
+            font-weight: 700;
+        }
+
+        .capital-highlight {
+            color: #3fb950;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        /* Address Box */
+        .address-box {
+            background-color: #21262d;
+            border-left: 3px solid #8b949e;
+            padding: 14px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        /* Contact Details */
+        .contact-item {
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-val {
+            font-size: 14px;
+            color: #58a6ff;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid #30363d;
+            padding-top: 16px;
+            text-align: center;
+            font-size: 12px;
+            color: #484f58;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER -->
+    <div class="header">
+        <div>
+            <h1 class="header-title">CLOOSET SERVIÇOS ONLINE S.A.</h1>
+            <div class="header-subtitle">Tecnologia & Infraestrutura para Moda e E-commerce</div>
+        </div>
+        <div class="status-badge">● SITUAÇÃO: ATIVA</div>
+    </div>
+
+    <!-- TOP SECTION: PRINCIPAIS SERVIÇOS -->
+    <div class="services-card">
+        <div class="section-title">Principais Serviços & Operações</div>
+        <div class="services-grid">
+            <div class="service-box">
+                <div class="service-icon">⚡ E-Commerce Platform</div>
+                <div class="service-name">Soluções Digitais Omnichannel</div>
+                <div class="service-desc">Desenvolvimento e gestão de plataformas de venda online de alta performance e integração de catálogos digitais.</div>
+            </div>
+            <div class="service-box">
+                <div class="service-icon">📦 Hub Logístico Inteligente</div>
+                <div class="service-name">Fulfillment & Gestão de Estoque</div>
+                <div class="service-desc">Operação completa de armazenagem, separação e expedição de produtos no Terminal Intermodal.</div>
+            </div>
+            <div class="service-box">
+                <div class="service-icon">🔄 Serviços Compartilhados</div>
+                <div class="service-name">Gestão Integrada de Moda</div>
+                <div class="service-desc">Suporte fiscal, operacional e tecnológico centralizado para grandes marcas parceiras do ecossistema.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT GRID -->
+    <div class="main-grid">
+        <!-- LEFT COLUMN: REGISTRO LEGAL -->
+        <div>
+            <div class="card">
+                <div class="section-title">Informações de Registro Legal</div>
+                <table class="info-table">
+                    <tr>
+                        <td class="label">CNPJ</td>
+                        <td class="value value-highlight">25.108.278/0001-08</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Razão Social</td>
+                        <td class="value value-highlight">Clooset Servicos Online S.a</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Data de Abertura</td>
+                        <td class="value">30/06/2016 <span style="color: #8b949e; font-size: 11px;">(10 anos, 1 mês e 22 dias)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Capital Social</td>
+                        <td class="value capital-highlight">R$ 4.961.281,37</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Natureza Jurídica</td>
+                        <td class="value">Sociedade Anônima Fechada</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Porte da Empresa</td>
+                        <td class="value">Sem Enquadramento</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Tipo de Estabelecimento</td>
+                        <td class="value">Matriz</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Situação Cadastral</td>
+                        <td class="value" style="color: #3fb950;">Ativa <span style="color:#8b949e; font-weight:normal;">(desde 30/06/2016)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Opção pelo Simples</td>
+                        <td class="value" style="color: #f85149;">Não</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Opção pelo MEI</td>
+                        <td class="value" style="color: #f85149;">Não</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: CONTATOS & ENDEREÇO -->
+        <div>
+            <!-- CONTATOS -->
+            <div class="card">
+                <div class="section-title">Canais de Contato</div>
+                <div class="contact-item">
+                    <div class="contact-label">E-mail Fiscal / Administrativo</div>
+                    <div class="contact-val">fiscal@paulatorres.com.br</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Telefone Principal</div>
+                    <div class="contact-val">(11) 3087-3434</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Telefone Secundário</div>
+                    <div class="contact-val">(11) 1406-3947</div>
+                </div>
+            </div>
+
+            <!-- LOCALIZAÇÃO -->
+            <div class="card">
+                <div class="section-title">Localização do Estabelecimento</div>
+                <table class="info-table">
+                    <tr>
+                        <td class="label">Município / UF</td>
+                        <td class="value">Serra / Espírito Santo</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Bairro</td>
+                        <td class="value">Terminal Intermodal da Serra</td>
+                    </tr>
+                    <tr>
+                        <td class="label">CEP</td>
+                        <td class="value">29161-376</td>
+                    </tr>
+                </table>
+                
+                <div style="margin-top: 14px; font-weight: 600; font-size: 11px; color: #8b949e; text-transform: uppercase;">Endereço para Correspondência:</div>
+                <div class="address-box">
+                    <strong>Clooset Servicos Online S.a</strong><br>
+                    Avenida Acesso Rodoviario, 3600<br>
+                    Quadra011 Lote M-01 Galpao05 A 10 Sala 158<br>
+                    Terminal Intermodal da Serra - Serra/ES<br>
+                    CEP: 29161-376
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        Ficha Cadastral Corporativa Simplificada • Clooset Serviços Online S.A. • CNPJ: 25.108.278/0001-08
+    </div>
+</div>
+
+</body>
+</html>
